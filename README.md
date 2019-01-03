@@ -1,3 +1,26 @@
+## nonpersistent_voxel_layer (kinetic) - 1.1.3-0
+
+The packages in the `nonpersistent_voxel_layer` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release --rosdistro kinetic --track kinetic nonpersistent_voxel_layer` on `Thu, 03 Jan 2019 19:40:29 -0000`
+
+The `nonpersistent_voxel_layer` package was released.
+
+Version of package(s) in repository `nonpersistent_voxel_layer`:
+
+- upstream repository: https://github.com/SteveMacenski/nonpersistent_voxel_layer.git
+- release repository: https://github.com/SteveMacenski/nonpersistent_voxel_layer-release.git
+- rosdistro version: `1.1.2-0`
+- old version: `1.1.2-0`
+- new version: `1.1.3-0`
+
+Versions of tools used:
+
+- bloom version: `0.6.9`
+- catkin_pkg version: `0.4.9`
+- rosdep version: `0.13.0`
+- rosdistro version: `0.7.0`
+- vcstools version: `0.1.40`
+
+
 ## nonpersistent_voxel_layer (kinetic) - 1.1.2-0
 
 The packages in the `nonpersistent_voxel_layer` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release --rosdistro kinetic --track kinetic nonpersistent_voxel_layer --edit` on `Tue, 14 Aug 2018 18:36:27 -0000`
