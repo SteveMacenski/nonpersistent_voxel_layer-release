@@ -1,3 +1,26 @@
+## nonpersistent_voxel_layer (eloquent) - 2.1.0-2
+
+The packages in the `nonpersistent_voxel_layer` repository were released into the `eloquent` distro by running `/usr/bin/bloom-release --rosdistro eloquent --track eloquent nonpersistent_voxel_layer` on `Wed, 18 Dec 2019 21:01:01 -0000`
+
+The `nonpersistent_voxel_layer` package was released.
+
+Version of package(s) in repository `nonpersistent_voxel_layer`:
+
+- upstream repository: https://github.com/SteveMacenski/nonpersistent_voxel_layer.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `2.1.0-1`
+- new version: `2.1.0-2`
+
+Versions of tools used:
+
+- bloom version: `0.9.0`
+- catkin_pkg version: `0.4.15`
+- rosdep version: `0.18.0`
+- rosdistro version: `0.8.0`
+- vcstools version: `0.1.42`
+
+
 ## nonpersistent_voxel_layer (dashing) - 2.1.0-1
 
 The packages in the `nonpersistent_voxel_layer` repository were released into the `dashing` distro by running `/usr/bin/bloom-release --rosdistro dashing --track eloquent nonpersistent_voxel_layer` on `Wed, 18 Dec 2019 20:54:59 -0000`
