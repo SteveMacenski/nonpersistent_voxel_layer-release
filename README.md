@@ -1,3 +1,26 @@
+## nonpersistent_voxel_layer (noetic) - 1.2.3-2
+
+The packages in the `nonpersistent_voxel_layer` repository were released into the `noetic` distro by running `/usr/bin/bloom-release nonpersistent_voxel_layer --track noetic --rosdistro noetic --new-track` on `Thu, 09 Jul 2020 01:35:34 -0000`
+
+The `nonpersistent_voxel_layer` package was released.
+
+Version of package(s) in repository `nonpersistent_voxel_layer`:
+
+- upstream repository: https://github.com/SteveMacenski/nonpersistent_voxel_layer.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `1.2.3-1`
+- new version: `1.2.3-2`
+
+Versions of tools used:
+
+- bloom version: `0.9.7`
+- catkin_pkg version: `0.4.22`
+- rosdep version: `0.19.0`
+- rosdistro version: `0.8.2`
+- vcstools version: `0.1.42`
+
+
 ## nonpersistent_voxel_layer (foxy) - 2.2.1-1
 
 The packages in the `nonpersistent_voxel_layer` repository were released into the `foxy` distro by running `/usr/bin/bloom-release nonpersistent_voxel_layer --track foxy --rosdistro foxy --new-track` on `Thu, 09 Jul 2020 01:30:28 -0000`
