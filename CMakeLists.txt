@@ -1,84 +1,93 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(nonpersistent_voxel_layer)
 
-find_package(catkin REQUIRED
-        COMPONENTS
-            cmake_modules
-            dynamic_reconfigure
-            geometry_msgs
-            laser_geometry
-            map_msgs
-            message_filters
-            message_generation
-            nav_msgs
-            pluginlib
-            roscpp
-            sensor_msgs
-            std_msgs
-            tf
-            visualization_msgs
-            voxel_grid
-            costmap_2d
-        )
+if(NOT WIN32)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+endif()
 
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+find_package(ament_cmake REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(laser_geometry REQUIRED)
+find_package(map_msgs REQUIRED)
+find_package(message_filters REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(nav2_msgs REQUIRED)
+find_package(pluginlib REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(visualization_msgs REQUIRED)
+find_package(nav2_voxel_grid REQUIRED)
+find_package(nav2_costmap_2d REQUIRED)
 find_package(Eigen3 REQUIRED)
-find_package(Boost REQUIRED COMPONENTS system thread)
-include_directories(
-    include
-    ${catkin_INCLUDE_DIRS}
-    ${EIGEN3_INCLUDE_DIRS}
-    ${Boost_INCLUDE_DIRS}
-)
+
+set(dependencies
+	geometry_msgs
+	laser_geometry
+	map_msgs
+	message_filters
+	nav_msgs
+	pluginlib
+	sensor_msgs
+  nav2_msgs
+	rclcpp
+	std_msgs
+	tf2
+	tf2_ros
+	visualization_msgs
+	nav2_voxel_grid
+	nav2_costmap_2d)
+
+set(library_name nonpersistent_voxel_layer_core)
 
 add_definitions(${EIGEN3_DEFINITIONS})
 
-# dynamic reconfigure
-generate_dynamic_reconfigure_options(
-  cfg/NonPersistentVoxelPlugin.cfg
+include_directories(
+    include
+    ${EIGEN3_INCLUDE_DIRS}
 )
 
-catkin_package(
-    INCLUDE_DIRS
-        include
-    LIBRARIES nonpersistent_voxel_layer
-    CATKIN_DEPENDS
-        dynamic_reconfigure
-        geometry_msgs
-        laser_geometry
-        map_msgs
-        costmap_2d
-        message_filters
-        message_runtime
-        nav_msgs
-        pluginlib
-        roscpp
-        sensor_msgs
-        std_msgs
-        tf
-        visualization_msgs
-        voxel_grid
-    DEPENDS
-        EIGEN3
-        Boost
+add_library(${library_name} SHARED
+	plugins/nonpersistent_voxel_layer.cpp
 )
 
-add_library(nonpersistent_voxel_layer
-  plugins/nonpersistent_voxel_layer.cpp
-)
-add_dependencies(nonpersistent_voxel_layer ${PROJECT_NAME}_gencfg)
-target_link_libraries(nonpersistent_voxel_layer ${catkin_LIBRARIES})
+target_compile_definitions(${library_name} PUBLIC "PLUGINLIB__DISABLE_BOOST_FUNCTIONS")
 
-install(TARGETS
-    nonpersistent_voxel_layer
-    ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-    LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+target_link_libraries(${library_name}
+  ${EIGEN3_LIBRARIES}
+)
+
+ament_target_dependencies(${library_name}
+  ${dependencies}
+)
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+install(TARGETS ${library_name}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION lib
+)
+
+install(DIRECTORY example
+  DESTINATION share/${PROJECT_NAME}
 )
 
 install(FILES costmap_plugins.xml
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  DESTINATION share/${PROJECT_NAME}
 )
 
-install(DIRECTORY include/nonpersistent_voxel_layer/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-  PATTERN ".svn" EXCLUDE
-)
+ament_export_include_directories(include)
+ament_export_libraries(${library_name})
+ament_export_dependencies(${dependencies})
+pluginlib_export_plugin_description_file(nav2_costmap_2d costmap_plugins.xml)
+ament_package()
