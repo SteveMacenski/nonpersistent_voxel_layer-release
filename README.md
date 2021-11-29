@@ -1,3 +1,26 @@
+## nonpersistent_voxel_layer (galactic) - 2.2.2-1
+
+The packages in the `nonpersistent_voxel_layer` repository were released into the `galactic` distro by running `/usr/bin/bloom-release nonpersistent_voxel_layer --rosdistro galactic --track galactic --edit` on `Mon, 29 Nov 2021 20:34:40 -0000`
+
+The `nonpersistent_voxel_layer` package was released.
+
+Version of package(s) in repository `nonpersistent_voxel_layer`:
+
+- upstream repository: https://github.com/SteveMacenski/nonpersistent_voxel_layer.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `2.2.2-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.7`
+- catkin_pkg version: `0.4.24`
+- rosdep version: `0.21.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## nonpersistent_voxel_layer (noetic) - 1.3.0-2
 
 The packages in the `nonpersistent_voxel_layer` repository were released into the `noetic` distro by running `/usr/bin/bloom-release --rosdistro noetic --track noetic nonpersistent_voxel_layer` on `Thu, 28 Jan 2021 16:22:54 -0000`
